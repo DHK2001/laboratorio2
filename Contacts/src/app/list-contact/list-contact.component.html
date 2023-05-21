@@ -1,0 +1,26 @@
+<div class="container">
+  <p>Ingrese el nombre, teléfono o correo del contacto que desea encontrar.</p>
+
+  <input name="search" id="search" type="text" class="form-control" [(ngModel)]="search" (input)="filterBySearch()">
+
+  <button (click)="verAgregarContacto()" class="btn btn-block btn-success">Agregar Contacto</button>
+
+  <div class="row mt-4">
+    <div class="col-sm-3" *ngFor="let contact of contactListFilter">
+      <div class="card my-1">
+        <div class="card-body">
+          <h2 class="card-title">{{ contact.title }} {{ contact.name }}</h2>
+        </div>
+        <div class="card-footer">
+          <a [routerLink]="['/contact', contact.phone]" class="btn btn-primary">Ver Contacto</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="agregarContacto" class="mt-4">
+    <app-create-contact></app-create-contact>
+  </div>
+</div>
+
+  
